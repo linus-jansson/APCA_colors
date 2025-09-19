@@ -154,6 +154,12 @@ function solveLForAPCA(targetLc, H, C, iters = 22) {
 console.log("BW:", apcaVsWhite(new Color("#000"))); // should be ~ +106
 console.log("WB:", apcaVsBlack(new Color("#fff"))); // should be ~ -106
 
+const isColor = (strColor) => {
+  const s = new Option().style;
+  s.color = strColor;
+  return s.color !== '';
+}
+
 export function generateAPCAPalette({
   base = "#59626F",
   steps = STEPS,
@@ -164,6 +170,9 @@ export function generateAPCAPalette({
   // optional: soft-compress instead of hard-clip when shifting
   anchorStrategy = "clip" // "clip" | "scale"
 } = {}) {
+  if(!isColor(base)) {
+    return []
+  }
   const baseOK = new Color(base).to("oklch");
   const [L0, C0, H0] = baseOK.coords;
 

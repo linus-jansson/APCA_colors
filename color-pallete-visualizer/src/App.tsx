@@ -1,3 +1,4 @@
+import { useId, useState } from 'react';
 import './App.css'
 
 import { generateAPCAPalette } from './color'
@@ -9,7 +10,7 @@ function Palette({ name, hex, anchor500 = false }: {name: string, hex: string, a
   });
   return (
     <details>
-      <summary>{name} <span style={{backgroundColor: hex}}>(base {hex})</span> - {palette.length} colors</summary>
+      <summary>{name} <span style={{backgroundColor: hex}}>(base {hex})</span></summary>
       <div className='wrapper'>
         <button onClick={() => navigator.clipboard.writeText(JSON.stringify(palette))}>copy whole object</button>
         {palette.map((row: any, idx: number) => {
@@ -35,19 +36,42 @@ function Palette({ name, hex, anchor500 = false }: {name: string, hex: string, a
 }
 
 function App() {
+  const [base, setBase] = useState("#59626F");
+  const [anchor500, setAnchor500] = useState(true);
+  const labelFor = useId();
+
   return (
-    <div style={{display: "grid", gridAutoColumns: ""}}>
-      <Palette name="purple" hex="#955AAA" />
-      <Palette name="green" hex="#317E85" />
-      <Palette name="blue" hex="#706DA8" />
-      <Palette name="gray" hex="#6B7482" />
+    <div>
+      <div>
+        <div className='forms'>
+          <label htmlFor={labelFor}>Base color</label>
+          <input type="text" id={labelFor} placeholder="Enter color hex" value={base} onChange={(e) => setBase(e.target.value)} />
+        </div>
+        <div className='forms'>
+          <label htmlFor={labelFor}>Anchor base at color-500</label>
+          <input type='checkbox' id={labelFor} checked={anchor500} onChange={(e) => setAnchor500(e.target.checked)} />
+        </div>
 
-      <Palette name="purple" hex="#7A3093" />
-      <Palette name="green" hex="#195D63" />
-      <Palette name="blue" hex="#4C4698" />
-      <Palette name="gray" hex="#4C576A" />
+        <Palette name={base} hex={base} anchor500={anchor500} />
+      </div>
 
-      <Palette name="neutral" hex="#59626F" anchor500={true} />
+      <div>
+        <p>Base 500 (no anchor)</p>
+        <Palette name="purple" hex="#955AAA" />
+        <Palette name="green" hex="#317E85" />
+        <Palette name="blue" hex="#706DA8" />
+        <Palette name="gray" hex="#6B7482" />
+
+        <p>Base 650 (no anchor)</p>
+        <Palette name="purple" hex="#7A3093" />
+        <Palette name="green" hex="#195D63" />
+        <Palette name="blue" hex="#4C4698" />
+        <Palette name="gray" hex="#4C576A" />
+
+        <p>Anchor att color-500</p>
+        <Palette name="neutral" hex="#59626F" anchor500={true} />
+      </div>
+      
     </div>
   )
 }

@@ -33,3 +33,11 @@
   align-items: center;
   gap: 1.25rem;
 }
+
+.forms {
+  display: flex;
+  flex-direction: row;
+  gap: .15rem;
+  align-items: center;
+  width: fit-content;
+}
