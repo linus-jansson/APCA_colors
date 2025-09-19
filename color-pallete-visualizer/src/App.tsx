@@ -20,7 +20,7 @@ function Palette({ name, hex, anchor500 = false }: {name: string, hex: string, a
                 style={{ backgroundColor: row.hex, border: "1px black solid", color: (row.APCA_target > 0 ? 'white' : 'black') }}
               >
                 <h2>{row.token}</h2>
-                <p>{row.APCA_vs_white}/{row.APCA_vs_black}</p>
+                <p title='APCA_vs_white / APCA_vs_black'>{row.APCA_vs_white}{' '}/{' '}{row.APCA_vs_black}</p>
                 <div>
                   <p>{row.hex}</p>
                   <button onClick={() => navigator.clipboard.writeText(row.hex)}>Copy hex</button>
