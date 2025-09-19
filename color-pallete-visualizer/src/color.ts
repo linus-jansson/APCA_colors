@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import Color from "colorjs.io";
 
 /** ==== CONSTANTS FROM YOUR UPPSALA FILE (Blue as reference) ==== */

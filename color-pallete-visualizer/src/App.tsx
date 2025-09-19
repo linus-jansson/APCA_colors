@@ -1,33 +1,15 @@
 import './App.css'
 
-
-
-import purplePalette from '../../apca_generator/purpleish2.json' with { type: 'json' }
 import { generateAPCAPalette } from './color'
 
-const paletteSorted = purplePalette.sort((a, b) => {
-  return a.APCA_target - b.APCA_target
-})
-
-const purple = generateAPCAPalette({
-  base: "#955AAA"
-});
-const green = generateAPCAPalette({
-  base: "#317E85"
-});
-const blue = generateAPCAPalette({
-  base: "#706DA8"
-});
-
-
-function Palette({ name, hex }) {
+function Palette({ name, hex }: {name: string, hex: string}) {
   const palette = generateAPCAPalette({
     base: hex
   });
   return (
     <div className='wrapper'>
       <h1>{name} - {palette.length}</h1>
-      {palette.map((row) => {
+      {palette.map((row: any) => {
         return (
           <div className='card'>
             <h2>{row.token}</h2>
