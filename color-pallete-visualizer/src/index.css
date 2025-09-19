@@ -14,9 +14,9 @@
 }
 
 .wrapper {
-  display: grid;
+  display: flex;
   flex-direction: column;
-  gap: .15rem;
+  gap: .75rem;
 }
 
 .cardColor {
@@ -28,5 +28,6 @@
 .card {
   display: flex;
   align-items: center;
-  gap: 1.25rem
+  gap: 1.25rem;
+  width: fit-content;
 }

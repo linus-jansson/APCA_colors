@@ -151,7 +151,6 @@ function solveLForAPCA(targetLc, H, C, iters = 22) {
   return (lo + hi) / 2;
 }
 
-/** ==== MAIN ==== */
 export function generateAPCAPalette({
   base = "#706DA8", 
   steps = STEPS,

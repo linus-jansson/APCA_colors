@@ -32,12 +32,16 @@ function Palette({ name, hex }: {name: string, hex: string}) {
 
 function App() {
   return (
-    <div >
-      <Palette name="purple" hex="#955AAA" />
-      <Palette name="green" hex="#317E85" />
-      <Palette name="blue" hex="#706DA8" />
-      <Palette name="gray" hex="#6B7482" />
-      <Palette name="neutral" hex="#B0B0B0" />
+    <div>
+      <Palette name="purple (base 500)" hex="#955AAA" />
+      <Palette name="green (base 500)" hex="#317E85" />
+      <Palette name="blue (base 500)" hex="#706DA8" />
+      <Palette name="gray (base 500)" hex="#6B7482" />
+
+      <Palette name="purple (base 650)" hex="#7A3093" />
+      <Palette name="green (base 650)" hex="#195D63" />
+      <Palette name="blue (base 650)" hex="#4C4698" />
+      <Palette name="gray (base 650)" hex="#4C576A" />
     </div>
   )
 }
