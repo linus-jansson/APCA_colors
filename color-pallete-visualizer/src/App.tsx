@@ -13,12 +13,15 @@ function Palette({ name, hex }: {name: string, hex: string}) {
         return (
           <div className='card'>
             <h2>{row.token}</h2>
-            <button onClick={() => navigator.clipboard.writeText(row.hex)}>Copy</button>
+            
+            <button onClick={() => navigator.clipboard.writeText(row.hex)}>Copy hex</button>
             <div
               className='cardColor'
               key={row.hex}
-              style={{ backgroundColor: row.hex }}
-            />
+              style={{ backgroundColor: row.hex, border: "1px black solid" }}
+            >
+              <p style={{color: (row.APCA_target > 0 ? 'white' : 'black')}}>{row.hex}</p>
+            </div>
 
           </div>
         )

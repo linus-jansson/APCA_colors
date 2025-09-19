@@ -14,15 +14,15 @@
 }
 
 .wrapper {
-  display: flex;
+  display: grid;
   flex-direction: column;
-  gap: 1rem;
+  gap: .15rem;
 }
 
 .cardColor {
-  width: 250px;
-  height: 25px;
+  width: 125px;
   border-radius: 12px;
+  text-align: center;
 }
 
 .card {
