@@ -8,7 +8,7 @@ function Palette({ name, hex }: {name: string, hex: string}) {
   });
   return (
     <details>
-      <summary>{name} (base {hex}) - {palette.length} colors</summary>
+      <summary>{name} <span style={{backgroundColor: hex}}>(base {hex})</span> - {palette.length} colors</summary>
       <div className='wrapper'>
         {palette.map((row: any) => {
           return (
