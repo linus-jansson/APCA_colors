@@ -130,52 +130,104 @@ const toHex = c => c.to("srgb").toString({ format: "hex" });
 // APCA with Color.js
 const apca = (fg, bg) => fg.contrastAPCA(bg); // positive=dark-on-light, negative=light-on-dark
 
+// Per-step feasible APCA bounds given H & C
+function feasibleRangeForStep(H, C) {
+  const maxPos = apcaVsWhite(ok(0.02, C, H));  // darkest we allow
+  const minNeg = apcaVsBlack(ok(0.98, C, H));  // lightest we allow
+  // Safety margin so we don't chase asymptotes
+  return { min: Math.max(minNeg, -106.0), max: Math.min(maxPos, 106.0) };
+}
+
 // Solve L so APCA hits target; H & C fixed
 function solveLForAPCA(targetLc, H, C, iters = 22) {
+  const useWhite = targetLc >= 0;
   let lo = 0.02, hi = 0.98;
-  const bgIsWhite = targetLc >= 0;
-
   for (let i = 0; i < iters; i++) {
     const mid = (lo + hi) / 2;
     const col = ok(mid, C, H);
-    const Lc = bgIsWhite ? apcaVsWhite(col) : apcaVsBlack(col);
-
-    if (bgIsWhite) {
-      // Want Lc → target (positive). Darker (lower L) increases Lc vs white.
-      if (Lc < targetLc) hi = mid; else lo = mid;
-    } else {
-      // Want Lc → target (negative). Lighter (higher L) decreases Lc (more negative) vs black.
-      if (Lc > targetLc) lo = mid; else hi = mid;
-    }
+    const Lc = useWhite ? apcaVsWhite(col) : apcaVsBlack(col);
+    if (useWhite) { if (Lc < targetLc) hi = mid; else lo = mid; }
+    else          { if (Lc > targetLc) lo = mid; else hi = mid; }
   }
   return (lo + hi) / 2;
 }
+console.log("BW:", apcaVsWhite(new Color("#000"))); // should be ~ +106
+console.log("WB:", apcaVsBlack(new Color("#fff"))); // should be ~ -106
 
 export function generateAPCAPalette({
-  base = "#706DA8", 
+  base = "#59626F",
   steps = STEPS,
   targets = APCA_TARGET,
   deltaH = DELTA_H,
-  cRatio = C_RATIO
+  cRatio = C_RATIO,
+  anchor500 = false,
+  // optional: soft-compress instead of hard-clip when shifting
+  anchorStrategy = "clip" // "clip" | "scale"
 } = {}) {
-  const [L0, C0, H0] = new Color(base).to("oklch").coords;
+  const baseOK = new Color(base).to("oklch");
+  const [L0, C0, H0] = baseOK.coords;
 
-  const rows = [];
+  // shift targets so 500 passes through base (if anchoring)
+  let tShifted = targets;
+  if (anchor500) {
+    const t500 = targets["500"];
+    const baseAPCA = (t500 >= 0) ? apcaVsWhite(baseOK) : apcaVsBlack(baseOK);
+    const offset = baseAPCA - t500;
+
+    if (anchorStrategy === "scale") {
+      // compress highs so they don’t exceed limit after shifting
+      // find the largest positive after shift and scale the positive side
+      const shifted = Object.fromEntries(
+        Object.entries(targets).map(([k, v]) => [k, v + offset])
+      );
+      const posMax = Math.max(...Object.values(shifted).filter(v => v > 0));
+      const cap = 105.5; // keep a tiny headroom
+      const scale = posMax > cap ? (cap / posMax) : 1;
+      tShifted = Object.fromEntries(
+        Object.entries(shifted).map(([k, v]) =>
+          [k, v > 0 ? v * scale : v] // only compress the positive side
+        )
+      );
+    } else {
+      // default: linear shift; we’ll clip per-step below
+      tShifted = Object.fromEntries(
+        Object.entries(targets).map(([k, v]) => [k, v + offset])
+      );
+    }
+  }
+
+  const out = [];
   for (const s of steps) {
-    const H = H0 + (deltaH[s] ?? 0);
-    const C = Math.max(0, C0 * (cRatio[s] ?? 1));
-    const target = targets[s];
-    const L = solveLForAPCA(target, H, C);
+    const key = String(s);
+    const H = H0 + (deltaH[key] ?? 0);
+    const C = Math.max(0, C0 * (cRatio[key] ?? 1));
 
-    const col = ok(L, C, H);
-    rows.push({
+    const { min, max } = feasibleRangeForStep(H, C);
+    let target = tShifted[key];
+
+    let capped = false;
+    if (target > max) { target = max; capped = true; }
+    if (target < min) { target = min; capped = true; }
+
+    let col, L;
+    if (anchor500 && s === 500) {
+      col = baseOK;
+      L = baseOK.coords[0];
+    } else {
+      L = solveLForAPCA(target, H, C);
+      col = ok(L, C, H);
+    }
+
+    out.push({
       token: `color-${s}`,
       hex: toHex(col),
       OKLCH: { L: +L.toFixed(4), C: +C.toFixed(4), H: +(((H % 360)+360)%360).toFixed(2) },
-      APCA_vs_white: +apca(col, "white").toFixed(1),
-      APCA_vs_black: +apca(col, "black").toFixed(1),
-      APCA_target: target
+      APCA_vs_white: +apcaVsWhite(col).toFixed(1),
+      APCA_vs_black: +apcaVsBlack(col).toFixed(1),
+      APCA_target: targets[key],
+      APCA_target_effective: +tShifted[key].toFixed(1),
+      APCA_target_clamped: capped ? +target.toFixed(1) : undefined
     });
   }
-  return rows;
+  return out;
 }
