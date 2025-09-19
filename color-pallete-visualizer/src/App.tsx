@@ -7,26 +7,28 @@ function Palette({ name, hex }: {name: string, hex: string}) {
     base: hex
   });
   return (
-    <div className='wrapper'>
-      <h1>{name} - {palette.length}</h1>
-      {palette.map((row: any) => {
-        return (
-          <div className='card'>
-            <h2>{row.token}</h2>
-            
-            <button onClick={() => navigator.clipboard.writeText(row.hex)}>Copy hex</button>
-            <div
-              className='cardColor'
-              key={row.hex}
-              style={{ backgroundColor: row.hex, border: "1px black solid" }}
-            >
-              <p style={{color: (row.APCA_target > 0 ? 'white' : 'black')}}>{row.hex}</p>
-            </div>
+    <details>
+      <summary>{name} - {palette.length} colors</summary>
+      <div className='wrapper'>
+        {palette.map((row: any) => {
+          return (
+            <div className='card'>
+              <h2>{row.token}</h2>
+              
+              <button onClick={() => navigator.clipboard.writeText(row.hex)}>Copy hex</button>
+              <div
+                className='cardColor'
+                key={row.hex}
+                style={{ backgroundColor: row.hex, border: "1px black solid" }}
+              >
+                <p style={{color: (row.APCA_target > 0 ? 'white' : 'black')}}>{row.hex}</p>
+              </div>
 
-          </div>
-        )
-      })}
-    </div>
+            </div>
+          )
+        })}
+      </div>
+    </details>
   )
 }
 
