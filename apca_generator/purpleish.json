@@ -1,0 +1,262 @@
+[
+  {
+    "token": "color-100",
+    "hex": "#424242",
+    "APCA_target": -101,
+    "APCA_vs_white": 11.0,
+    "APCA_vs_black": -101.1,
+    "OKLCH_L": 0.3772,
+    "OKLCH_C": 0.0,
+    "OKLCH_H": 316.7
+  },
+  {
+    "token": "color-125",
+    "hex": "#332F35",
+    "APCA_target": -94,
+    "APCA_vs_white": 17.8,
+    "APCA_vs_black": -93.8,
+    "OKLCH_L": 0.3133,
+    "OKLCH_C": 0.0108,
+    "OKLCH_H": 316.7
+  },
+  {
+    "token": "color-150",
+    "hex": "#2B242E",
+    "APCA_target": -87,
+    "APCA_vs_white": 23.8,
+    "APCA_vs_black": -87.5,
+    "OKLCH_L": 0.271,
+    "OKLCH_C": 0.0215,
+    "OKLCH_H": 316.7
+  },
+  {
+    "token": "color-175",
+    "hex": "#251A29",
+    "APCA_target": -80,
+    "APCA_vs_white": 30.6,
+    "APCA_vs_black": -80.2,
+    "OKLCH_L": 0.2362,
+    "OKLCH_C": 0.0323,
+    "OKLCH_H": 316.7
+  },
+  {
+    "token": "color-200",
+    "hex": "#25172B",
+    "APCA_target": 32,
+    "APCA_vs_white": 32.1,
+    "APCA_vs_black": -78.6,
+    "OKLCH_L": 0.2324,
+    "OKLCH_C": 0.0431,
+    "OKLCH_H": 316.7
+  },
+  {
+    "token": "color-25",
+    "hex": "#65506D",
+    "APCA_target": -106,
+    "APCA_vs_white": 6.5,
+    "APCA_vs_black": -106.0,
+    "OKLCH_L": 0.4643,
+    "OKLCH_C": 0.0538,
+    "OKLCH_H": 316.7
+  },
+  {
+    "token": "color-250",
+    "hex": "#260F2E",
+    "APCA_target": 36,
+    "APCA_vs_white": 35.9,
+    "APCA_vs_black": -74.7,
+    "OKLCH_L": 0.2177,
+    "OKLCH_C": 0.0646,
+    "OKLCH_H": 316.7
+  },
+  {
+    "token": "color-275",
+    "hex": "#23082D",
+    "APCA_target": 41,
+    "APCA_vs_white": 40.8,
+    "APCA_vs_black": -69.5,
+    "OKLCH_L": 0.2021,
+    "OKLCH_C": 0.0753,
+    "OKLCH_H": 316.7
+  },
+  {
+    "token": "color-300",
+    "hex": "#20012A",
+    "APCA_target": 48,
+    "APCA_vs_white": 47.4,
+    "APCA_vs_black": -62.7,
+    "OKLCH_L": 0.1802,
+    "OKLCH_C": 0.0861,
+    "OKLCH_H": 316.7
+  },
+  {
+    "token": "color-350",
+    "hex": "#180023",
+    "APCA_target": 55,
+    "APCA_vs_white": 55.1,
+    "APCA_vs_black": -54.7,
+    "OKLCH_L": 0.1446,
+    "OKLCH_C": 0.0969,
+    "OKLCH_H": 316.7
+  },
+  {
+    "token": "color-400",
+    "hex": "#10001B",
+    "APCA_target": 63,
+    "APCA_vs_white": 63.1,
+    "APCA_vs_black": -46.5,
+    "OKLCH_L": 0.1031,
+    "OKLCH_C": 0.1076,
+    "OKLCH_H": 316.7
+  },
+  {
+    "token": "color-450",
+    "hex": "#090016",
+    "APCA_target": 70,
+    "APCA_vs_white": 70.0,
+    "APCA_vs_black": -39.6,
+    "OKLCH_L": 0.0716,
+    "OKLCH_C": 0.1184,
+    "OKLCH_H": 316.7
+  },
+  {
+    "token": "color-50",
+    "hex": "#6D367F",
+    "APCA_target": -104,
+    "APCA_vs_white": 8.4,
+    "APCA_vs_black": -104.0,
+    "OKLCH_L": 0.4349,
+    "OKLCH_C": 0.1292,
+    "OKLCH_H": 316.7
+  },
+  {
+    "token": "color-500",
+    "hex": "#040010",
+    "APCA_target": 77,
+    "APCA_vs_white": 77.5,
+    "APCA_vs_black": -32.2,
+    "OKLCH_L": 0.0399,
+    "OKLCH_C": 0.1292,
+    "OKLCH_H": 316.7
+  },
+  {
+    "token": "color-550",
+    "hex": "#03000D",
+    "APCA_target": 80,
+    "APCA_vs_white": 80.4,
+    "APCA_vs_black": -29.4,
+    "OKLCH_L": 0.0369,
+    "OKLCH_C": 0.1184,
+    "OKLCH_H": 316.7
+  },
+  {
+    "token": "color-600",
+    "hex": "#02000A",
+    "APCA_target": 83,
+    "APCA_vs_white": 83.7,
+    "APCA_vs_black": -26.2,
+    "OKLCH_L": 0.0322,
+    "OKLCH_C": 0.1076,
+    "OKLCH_H": 316.7
+  },
+  {
+    "token": "color-650",
+    "hex": "#020006",
+    "APCA_target": 87,
+    "APCA_vs_white": 86.3,
+    "APCA_vs_black": -23.7,
+    "OKLCH_L": 0.0246,
+    "OKLCH_C": 0.0969,
+    "OKLCH_H": 316.7
+  },
+  {
+    "token": "color-700",
+    "hex": "#010004",
+    "APCA_target": 90,
+    "APCA_vs_white": 90.5,
+    "APCA_vs_black": -19.6,
+    "OKLCH_L": 0.0223,
+    "OKLCH_C": 0.0861,
+    "OKLCH_H": 316.7
+  },
+  {
+    "token": "color-725",
+    "hex": "#010003",
+    "APCA_target": 93,
+    "APCA_vs_white": 91.6,
+    "APCA_vs_black": -18.6,
+    "OKLCH_L": 0.02,
+    "OKLCH_C": 0.0753,
+    "OKLCH_H": 316.7
+  },
+  {
+    "token": "color-75",
+    "hex": "#594062",
+    "APCA_target": -103,
+    "APCA_vs_white": 9.2,
+    "APCA_vs_black": -103.1,
+    "OKLCH_L": 0.4115,
+    "OKLCH_C": 0.0646,
+    "OKLCH_H": 316.7
+  },
+  {
+    "token": "color-750",
+    "hex": "#000002",
+    "APCA_target": 97,
+    "APCA_vs_white": 98.0,
+    "APCA_vs_black": -12.7,
+    "OKLCH_L": 0.0227,
+    "OKLCH_C": 0.0538,
+    "OKLCH_H": 316.7
+  },
+  {
+    "token": "color-775",
+    "hex": "#000001",
+    "APCA_target": 100,
+    "APCA_vs_white": 101.1,
+    "APCA_vs_black": -9.9,
+    "OKLCH_L": 0.0274,
+    "OKLCH_C": 0.0431,
+    "OKLCH_H": 316.7
+  },
+  {
+    "token": "color-800",
+    "hex": "#000001",
+    "APCA_target": 102,
+    "APCA_vs_white": 101.1,
+    "APCA_vs_black": -9.9,
+    "OKLCH_L": 0.02,
+    "OKLCH_C": 0.0323,
+    "OKLCH_H": 316.7
+  },
+  {
+    "token": "color-850",
+    "hex": "#000000",
+    "APCA_target": 103,
+    "APCA_vs_white": 113.1,
+    "APCA_vs_black": -0.0,
+    "OKLCH_L": 0.0284,
+    "OKLCH_C": 0.0215,
+    "OKLCH_H": 316.7
+  },
+  {
+    "token": "color-875",
+    "hex": "#000000",
+    "APCA_target": 104,
+    "APCA_vs_white": 113.1,
+    "APCA_vs_black": -0.0,
+    "OKLCH_L": 0.0397,
+    "OKLCH_C": 0.0108,
+    "OKLCH_H": 316.7
+  },
+  {
+    "token": "color-900",
+    "hex": "#010101",
+    "APCA_target": 105,
+    "APCA_vs_white": 84.9,
+    "APCA_vs_black": -25.0,
+    "OKLCH_L": 0.0533,
+    "OKLCH_C": 0.0,
+    "OKLCH_H": 316.7
+  }
+]
