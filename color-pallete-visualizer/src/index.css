@@ -16,18 +16,20 @@
 .wrapper {
   display: flex;
   flex-direction: column;
+  /* grid-template-columns: repeat(auto-fill, minmax(75px, 1fr)); */
   gap: .75rem;
 }
 
 .cardColor {
-  width: 125px;
+  display: flex;
+  gap: .5rem;
   border-radius: 12px;
   text-align: center;
+  padding: 12px;
 }
 
 .card {
   display: flex;
   align-items: center;
   gap: 1.25rem;
-  width: fit-content;
 }

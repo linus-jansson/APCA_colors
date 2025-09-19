@@ -13,15 +13,16 @@ function Palette({ name, hex }: {name: string, hex: string}) {
         {palette.map((row: any) => {
           return (
             <div className='card'>
-              <h2>{row.token}</h2>
-              
-              <button onClick={() => navigator.clipboard.writeText(row.hex)}>Copy hex</button>
               <div
                 className='cardColor'
                 key={row.hex}
-                style={{ backgroundColor: row.hex, border: "1px black solid" }}
+                style={{ backgroundColor: row.hex, border: "1px black solid", color: (row.APCA_target > 0 ? 'white' : 'black') }}
               >
-                <p style={{color: (row.APCA_target > 0 ? 'white' : 'black')}}>{row.hex}</p>
+                <h2>{row.token}</h2>
+                <div>
+                  <p>{row.hex}</p>
+                  <button onClick={() => navigator.clipboard.writeText(row.hex)}>Copy hex</button>
+                </div>
               </div>
 
             </div>
@@ -34,7 +35,7 @@ function Palette({ name, hex }: {name: string, hex: string}) {
 
 function App() {
   return (
-    <div>
+    <div style={{display: "grid", gridAutoColumns: ""}}>
       <Palette name="purple" hex="#955AAA" />
       <Palette name="green" hex="#317E85" />
       <Palette name="blue" hex="#706DA8" />
