@@ -10,6 +10,7 @@ function Palette({ name, hex }: {name: string, hex: string}) {
     <details>
       <summary>{name} <span style={{backgroundColor: hex}}>(base {hex})</span> - {palette.length} colors</summary>
       <div className='wrapper'>
+        <button onClick={() => navigator.clipboard.writeText(JSON.stringify(palette))}>copy whole object</button>
         {palette.map((row: any) => {
           return (
             <div className='card'>
@@ -24,7 +25,6 @@ function Palette({ name, hex }: {name: string, hex: string}) {
                   <button onClick={() => navigator.clipboard.writeText(row.hex)}>Copy hex</button>
                 </div>
               </div>
-
             </div>
           )
         })}
